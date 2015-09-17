@@ -1,0 +1,66 @@
+<%= form_for @store, :html => { :class => "form-horizontal store" } do |f| %>
+
+    <% if @store.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@store.errors.count, "error") %> prohibited this store from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @store.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@store[:name]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'form-control' %>
+    </div>
+    <%= error_span(@store[:address]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :lat, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :lat, :class => 'form-control' %>
+    </div>
+    <%= error_span(@store[:lat]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :long, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :long, :class => 'form-control' %>
+    </div>
+    <%= error_span(@store[:long]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :pin, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :pin, :class => 'form-control' %>
+    </div>
+    <%= error_span(@store[:pin]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone, :class => 'form-control' %>
+    </div>
+    <%= error_span(@store[:phone]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            stores_path, :class => 'btn btn-default' %>
+
+<% end %>
