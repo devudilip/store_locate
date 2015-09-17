@@ -1,0 +1,2 @@
+module LocateStoresHelper
+end

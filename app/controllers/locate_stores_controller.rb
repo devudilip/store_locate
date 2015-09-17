@@ -1,0 +1,2 @@
+class LocateStoresController < ApplicationController
+end
