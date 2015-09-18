@@ -8,11 +8,11 @@
       zoom: 8
     });
 
-    var marker = new google.maps.Marker({
-      position: myLatLng,
-      map: map,
-      title: 'Hello World!'
-    });
+    // var marker = new google.maps.Marker({
+    //   position: myLatLng,
+    //   map: map,
+    //   title: 'Hello World!'
+    // });
 
 
     var marker, i;
@@ -22,6 +22,30 @@
         map: map
       });
     };
+
+     var infoWindow = new google.maps.InfoWindow({map: map});
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        // mocking current location as london only
+        lat: 51.508530,//position.coords.latitude,
+        lng: -0.076132//position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('You are here.');
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+
+  
   }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzcrBjvqWxsxl7e_Tzqhf7k-zZTQhEibE&callback=initMap"
