@@ -2,7 +2,7 @@ Fork this repo and clone to your local.
 
 OR
 
-=> git clone https://github.com/devudilip/store_locate.git(Can download as tar)
-=> bundle install
-=> rake db:migrate
+git clone https://github.com/devudilip/store_locate.git(Can download as tar)
+bundle install
+rake db:migrate
 
