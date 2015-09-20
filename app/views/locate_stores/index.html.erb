@@ -1,38 +1,47 @@
-<label for="product">Product</label>:
-    <%= text_field_tag 'product' %>
-<%= submit_tag 'Search',:id => 'search' %><div id="loading"></div>
-
-<div id="map" style="height: 500px;"></div>
-
+ <div class="row">
+  <div class="col-lg-12">
+    <form class="navbar-form" role="search" method="get" id="search-form" name="search-form">
+      <div class="input-group search-bar">
+      <input type="text" class="form-control" placeholder="Search Products" id="query" name="query" value="" required>
+        <div class="input-group-btn">
+          <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-lg-12">
+    <div id="map" style="height: 500px;"></div>
+  </div>
+</div>
 <%= render "locate_map.html.erb" %>
 
 
 <script>
-$(document).ready(function(){
+  $(document).ready(function(){
    $('#search').click(function(){      
-      if ($("#product").val() == "") {
-          alert("Please Enter a Product");
-      }
-      else {
-           $('#loading').html('<img src="/assets/images/loading.jpg"> loading...');
-           $.ajax({
-            type: "GET",
-            dataType: "json",
-            url: "https://api.github.com/users/jveldboom",
-            success: function (d) {
+    if ($("#product").val() == "") {
+      alert("Please Enter a Product");
+    }
+    else {
+     $('#loading').html('<img src="/assets/images/loading.jpg"> loading...');
+     $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: "https://api.github.com/users/jveldboom",
+      success: function (d) {
                 // replace div's content with returned data
                 $('#loading').html(d);
-                }
+              }
             });
-            
-            $.get("/controller/method/", {
-                product_val : $("#product").val()
-		    }, function(data) {    
-		        
-		    })      
-      }
-   });
-});
+
+     $.get("/controller/method/", {
+      product_val : $("#product").val()
+    }, function(data) {    
+
+    })      
+   }
+ });
+ });
 </script>
 
 

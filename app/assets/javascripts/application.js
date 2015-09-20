@@ -14,4 +14,19 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require_tree .
+
+
+$(document).ready(function () {
+// $("#search-form").validate({
+// 	rules: {
+// 		query: {required: true}
+// 	},
+// 	tooltip_options: {
+// 		query: {trigger:'focus'}
+// 	},
+// });
+
+});
