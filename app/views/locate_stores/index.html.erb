@@ -15,35 +15,3 @@
 </div>
 <%= render "locate_map.html.erb" %>
 
-
-<script>
-  $(document).ready(function(){
-   $('#search').click(function(){      
-    if ($("#product").val() == "") {
-      alert("Please Enter a Product");
-    }
-    else {
-     $('#loading').html('<img src="/assets/images/loading.jpg"> loading...');
-     $.ajax({
-      type: "GET",
-      dataType: "json",
-      url: "https://api.github.com/users/jveldboom",
-      success: function (d) {
-                // replace div's content with returned data
-                $('#loading').html(d);
-              }
-            });
-
-     $.get("/controller/method/", {
-      product_val : $("#product").val()
-    }, function(data) {    
-
-    })      
-   }
- });
- });
-</script>
-
-
-
-
