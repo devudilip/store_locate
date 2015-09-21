@@ -1,13 +1,19 @@
  <div class="row">
   <div class="col-lg-12">
-    <form class="navbar-form" role="search" method="get" id="search-form" name="search-form">
+    <!--<form class="navbar-form" role="search" method="get" id="search-form" name="search-form">-->
+      <%= form_tag(search_locate_stores_path, :html => {:method => :get}) do %>
       <div class="input-group search-bar">
-      <input type="text" class="form-control" placeholder="Search Products" id="query" name="query" value="" required>
+      <!--<input type="text" class="form-control" placeholder="Search Products" id="query" name="query" value="" required>-->
+      
+        <%= text_field_tag 'query','', :class=>"form-control", :placeholder => "Search Products"   %>
+      
         <div class="input-group-btn">
-          <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+          <!--<button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>-->
+          <%= submit_tag 'Search', :class=>"btn btn-success", :value=>"Search"%><i class="fa fa-search"></i>
         </div>
       </div>
-    </form>
+      <%end%>
+    <!--</form>-->
   </div>
   <div class="col-lg-12">
     <div id="map" style="height: 500px;"></div>
