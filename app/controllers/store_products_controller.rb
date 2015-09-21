@@ -22,6 +22,16 @@ class StoreProductsController < ApplicationController
     end
   end
 
+    # DELETE /stores/1
+  # DELETE /stores/1.json
+  def destroy
+   @store = StoreProduct.find(params[:id])
+   @store.destroy
+   respond_to do |format|
+    format.html { redirect_to store_products_url, notice: 'Store was successfully destroyed.' }
+    format.json { head :no_content }
+  end
+end
   private
 
   def store_product_params

@@ -1,5 +1,10 @@
-    <script>
-     var locations = <%= raw @stores.to_json %>;
+   <script>
+     // var locations = <%#= raw @stores.to_json %>;
+     <% if @available_stores.blank? %>
+     alert("Product not available!");
+     <% end %>
+     var locations = <%=raw @available_stores.to_json %>;
+     // console.log(available_stores);
      function initMap() {
       var mapDiv = document.getElementById('map');
       var directionsService = new google.maps.DirectionsService;
