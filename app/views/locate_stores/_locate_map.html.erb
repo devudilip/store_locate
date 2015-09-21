@@ -10,18 +10,7 @@
         center: myLatLng
       });
 
-      var marker, i;
-      map.markers = []; 
-      for (i = 0; i < locations.length; i++) {  
-        marker = new google.maps.Marker({
-          position: new google.maps.LatLng(locations[i]['lat'], locations[i]['long']),
-          map: map
-        });
-        map.markers.push(marker);
-      };
-
       var infoWindow = new google.maps.InfoWindow({map: map});
-
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -30,10 +19,16 @@
         lat: 51.508530,//position.coords.latitude,
         lng: -0.076132//position.coords.longitude
       };
-
       infoWindow.setPosition(pos);
       infoWindow.setContent('You are here.');
       map.setCenter(pos);
+      map.markers = []; 
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(51.508530, -0.076132),
+        map: map
+      });
+      map.markers.push(marker);
+
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -41,75 +36,8 @@
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
-
-
-  
-  google.maps.event.addDomListener(mapDiv, 'click', function() {
-    // window.alert('Map was clicked!');
-  });
-  // var onChangeHandler = function() {
-  //   calculateAndDisplayRoute(directionsService, directionsDisplay);
-  // };
-  // document.getElementById('start').addEventListener('change', onChangeHandler);
-  // document.getElementById('end').addEventListener('change', onChangeHandler);
-
-// short distance
-shortDistance()
-  // google.maps.event.addListener(map, 'click', function( event ) { });
-  function shortDistance() {
-    var lat = 51.508530;//event.latLng.lat();
-    var lng = -0.076132;//event.latLng.lng();
-    var R = 6371;
-    var distances = [];
-    var closest = -1;
-    for( i=0;i<map.markers.length; i++ ) {
-      var mlat = map.markers[i].position.lat();
-      var mlng = map.markers[i].position.lng();
-      var dLat  = rad(mlat - lat);
-      var dLong = rad(mlng - lng);
-      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-      Math.cos(rad(lat)) * Math.cos(rad(lat)) * Math.sin(dLong/2) * Math.sin(dLong/2);
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      var d = R * c;
-      distances[i] = d;
-      if ( closest == -1 || d < distances[closest] ) {
-        closest = i;
-      }
-    }
-    // H is lat; L is long
-    console.log(map.markers[closest]['position']['H']);
-    console.log(map.markers[closest]['position']['L']);
-    // alert(map.markers[closest].title);
-    var storeLatLng = {lat: map.markers[closest]['position']['H'], lng: map.markers[closest]['position']['L']};
-
-    directionsDisplay.setMap(map);
-    calculateAndDisplayRoute(directionsService, directionsDisplay, myLatLng, storeLatLng);
-
-  }
-
-
-
 //End of init map
 }
-
-function calculateAndDisplayRoute(directionsService, directionsDisplay, myLatLng, storeLatLng) {
-  directionsService.route({
-    origin: myLatLng,//document.getElementById('start').value,
-    destination: storeLatLng,//document.getElementById('end').value,
-    travelMode: google.maps.TravelMode.DRIVING
-  }, function(response, status) {
-    if (status === google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    } else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
-}
-
-function rad(x) {return x*Math.PI/180;}
-
-
-
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzcrBjvqWxsxl7e_Tzqhf7k-zZTQhEibE&callback=initMap"
