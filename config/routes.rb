@@ -1,3 +1,4 @@
+require 'api_constraints'
 Rails.application.routes.draw do
   resources :products
   resources :stores
@@ -56,4 +57,13 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+
+
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: :true) do
+    resources :stores
+  end
+end
+
 end
