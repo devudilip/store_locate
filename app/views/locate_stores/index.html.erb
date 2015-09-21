@@ -3,6 +3,7 @@
     <!--<form class="navbar-form" role="search" method="get" id="search-form" name="search-form">-->
       <%= form_tag(search_locate_stores_path, :html => {:method => :get}) do %>
       <div class="input-group search-bar">
+
       <!--<input type="text" class="form-control" placeholder="Search Products" id="query" name="query" value="" required>-->
       
         <%= text_field_tag 'query','', :class=>"form-control", :placeholder => "Search Products"   %>
@@ -19,5 +20,10 @@
     <div id="map" style="height: 500px;"></div>
   </div>
 </div>
-<%= render "locate_map.html.erb" %>
+
+<% if params[:search] %>
+<%= render "store_product_map" %>
+<% else %>
+<%= render "locate_map" %>
+<% end %>
 
