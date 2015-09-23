@@ -9,6 +9,21 @@ class LocateStoresController < ApplicationController
   end
 end
 
+  def query_chk
+       url = URI.parse("http://msl-products-api-sathishachilles.c9.io/api/products?query=#{params[:search]}")
+  
+       req = Net::HTTP::Get.new(url.to_s)
+       res = Net::HTTP.start(url.host, url.port) {|http|
+       http.request(req)
+       }
+       
+       p "--------------#{res.body.class}-------------"
+       p "--------------#{res.body}-------------"
+       #p "--------------#{res.body.keys}-------------"
+       
+       render :json=>[res.body] if res.body
+  end 
+
 def search
   @stores = Store.all
 

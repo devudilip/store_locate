@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :locate_stores do
     collection do
       post 'search'
+      get 'query_chk'
     end  
   end
   # The priority is based upon order of creation: first created -> highest priority.
