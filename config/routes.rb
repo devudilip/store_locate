@@ -70,6 +70,7 @@ Rails.application.routes.draw do
       resources :stores do
        get 'product_avail', on: :collection
      end
+     resources :products
    end
  end
 

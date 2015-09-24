@@ -49,4 +49,18 @@ class Product < ActiveRecord::Base
      end
    end
 
+    def self.find_prod_id(name)
+        product = Product.where("name like '#{name}%'")
+        if !product.blank?
+        product_hash = product.map { |x, i| [x.id => x.name] } 
+        #product_hash = { product.first.id => product.first.name} if !product.blank?
+       
+        return product_hash.flatten.to_json
+        
+        end
+    #    [:id, :name].each { |f| product_hash << product.first[f] if !product.blank? }
+     #   return  Hash[*product_hash.flatten].to_json
+        
+    end
+        
  end

@@ -5,7 +5,7 @@ class LocateStoresController < ApplicationController
   def index
    @stores = Store.select('lat, long')
    if params[:query]
-    @available_stores = Product.search(params[:query])
+    @available_stores = Product.find_prod_id(params[:query])
   end
 end
 

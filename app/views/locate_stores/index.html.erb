@@ -6,7 +6,7 @@
 
       <!--<input type="text" class="form-control" placeholder="Search Products" id="query" name="query" value="" required>-->
       
-        <%= text_field_tag 'query', params[:query], :class=>"form-control", :placeholder => "Search Products"   %>
+        <%= text_field_tag 'query', params[:query], :class=>"form-control", :placeholder => "Search Products"  %>
       
         <div class="input-group-btn">
           <!--<button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>-->
@@ -27,3 +27,11 @@
 <%= render "locate_map" %>
 <% end %>
 
+<script>
+
+<script type="text/javascript">
+ $('#query').keypress(function(e) {
+     alert('No results found');
+ });
+</script>
+</script>
