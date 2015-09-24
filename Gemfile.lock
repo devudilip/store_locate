@@ -170,6 +170,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-validation-rails
+  json
   less-rails
   rails (= 4.2.4)
   responders (~> 2.0)

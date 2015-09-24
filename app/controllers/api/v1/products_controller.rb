@@ -5,7 +5,7 @@ module Api
 
       def index
        
-        if  params[:query]
+        if params[:query]
          respond_with Product.find_prod_id(params[:query])
         else
          respond_with {}
