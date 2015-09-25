@@ -3,9 +3,7 @@
     <!--<form class="navbar-form" role="search" method="get" id="search-form" name="search-form">-->
       <%= form_tag(locate_stores_path, :method => :get ) do %>
       <div class="input-group search-bar">
-
       <!--<input type="text" class="form-control" placeholder="Search Products" id="query" name="query" value="" required>-->
-      
         <%= text_field_tag 'query', params[:query], :class=>"form-control", :placeholder => "Search Products"  %>
       
         <div class="input-group-btn">

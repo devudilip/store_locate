@@ -9,6 +9,8 @@ class LocateStoresController < ApplicationController
   end
 end
 
+
+
 def search
   @stores = Store.all
 

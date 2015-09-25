@@ -1,4 +1,7 @@
 class Product < ActiveRecord::Base
+ 
+  require 'open-uri'
+  require 'json'
   has_many :store_products
   has_many :stores, through: :store_products
 
@@ -49,29 +52,29 @@ class Product < ActiveRecord::Base
      end
    end
 
-    def self.find_prod_id(name)
-        product = Product.where("name like '#{name}%'")
-        if !product.blank?
-        product_hash = product.map { |x, i| [ x.name] } 
-        #product_hash = { product.first.id => product.first.name} if !product.blank?
-       
-        return product_hash.flatten.to_json
-        
+    def self.find_prod_id(name=nil)
+ 
+       if name != "" 
+          product = Product.where("name like '#{name}%'") 
+            if !product.blank?
+              product_hash = product.map { |x, i| [ x.name] } 
+               return product_hash.flatten.to_json
+            end
         end
-    #    [:id, :name].each { |f| product_hash << product.first[f] if !product.blank? }
-     #   return  Hash[*product_hash.flatten].to_json
-        
     end
     
     
     
     # product service TESCO public API
-    def self.check_services(api)
+    def self.check_services
      
-     result_json =  JSON.parse(open("http://ess-search-ppe.westeurope.cloudapp.azure.com/api/search/?query=bread&fields=tpnb,unitprice,price,name,description,IsNew,IsSpecialOffer,image,id,PromotionDescription,PromotionId,PromotionIcon,PromotionStart,PromotionEnd,ContentsMeasureType,ContentsQuantity,UnitQuantity,AverageSellingUnitWeight,UnitOfSale").read)
      
-     matched_products = result_json["uk"]["ghs"]["products"]["results"].collect {|val| {val["tpnb"] => val["name"]} }
-     matched_products.each {|f| puts f.keys }
+     return new_res = JSON.parse('api/products?query=br')
+     
+     #result_json =  JSON.parse(open("http://ess-search-ppe.westeurope.cloudapp.azure.com/api/search/?query=bread&fields=tpnb,unitprice,price,name,description,IsNew,IsSpecialOffer,image,id,PromotionDescription,PromotionId,PromotionIcon,PromotionStart,PromotionEnd,ContentsMeasureType,ContentsQuantity,UnitQuantity,AverageSellingUnitWeight,UnitOfSale").read)
+     
+     #matched_products = result_json["uk"]["ghs"]["products"]["results"].collect {|val| {val["tpnb"] => val["name"]} }
+     #matched_products.each {|f| puts f.keys }
     end
         
  end

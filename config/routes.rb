@@ -1,10 +1,6 @@
 require 'api_constraints'
 Rails.application.routes.draw do
-  resources :products# do
-  #  get 'check_services'
-  #end
-  
-  #getproducts/check_services
+  resources :products
   resources :stores
   resources :store_products
   resources :locate_stores do
@@ -72,8 +68,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: :true) do
       resources :stores 
-     resources :products
-     resources :check_incoming_services
+      resources :products
    end
  end
 
