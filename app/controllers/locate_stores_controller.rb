@@ -5,6 +5,8 @@ class LocateStoresController < ApplicationController
   def index
    @stores = Store.select('lat, long')
    if params[:query]
+    @destination_lat = 51.508315 
+    @destination_long = -0.165138
     @available_stores = Product.search(params[:query])
   end
 end
