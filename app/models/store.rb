@@ -11,9 +11,11 @@ class Store < ActiveRecord::Base
     stores = Store.all
     stores.each do |store|
       response = Product.search_availability(store.id,product_ids)
-      found_stores << {store: store.id,count: response[:count]}
+      found_stores << {store: store.id,count: response[:count], distance: store.store_distance}
     end
-    return Store.find(found_stores.sort_by { |store| store[:count] }.last[:store])
+    store_by_count = found_stores.sort_by { |store| store[:count] }.last
+    store_by_distance = found_stores.select{|store| store[:count] == store_by_count[:count]}.sort_by{|dis| dis[:distance]}.first[:store]
+    return Store.find(store_by_distance)
   end
 
 end
