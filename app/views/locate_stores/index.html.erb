@@ -4,24 +4,20 @@
 
 
     <!--<form class="navbar-form" role="search" method="get" id="search-form" name="search-form">-->
-      <%= form_for @product, url: locate_stores_path, method: :get do |f| %>
-      <div class="input-group search-bar">
+    <%= form_for @product, url: locate_stores_path, method: :get do |f| %>
+    <div class="input-group search-bar">
 
       <!--<input type="text" class="form-control" placeholder="Search Products" id="query" name="query" value="" required>-->
 
-     <%= f.select 'name',
-    Product.all.map { |u| [u.name, u.id] },
-               { include_blank: true },
-               { class: 'chosen-select form-control', multiple: true }
-     %>
+      <%= select_tag 'query', options_from_collection_for_select(Product.all, "id", "name"),include_blank: true, class: 'chosen-select form-control', multiple: true %>
 
       
-        <div class="input-group-btn">
-          <!--<button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>-->
-          <%= submit_tag 'Search', :class=>"btn btn-success", :value=>"Search"%><i class="fa fa-search"></i>
-        </div>
+      <div class="input-group-btn">
+        <!--<button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>-->
+        <%= submit_tag 'Search', :class=>"btn btn-success", :value=>"Search"%><i class="fa fa-search"></i>
       </div>
-      <%end%>
+    </div>
+    <%end%>
     <!--</form>-->
   </div>
   <div class="col-lg-12">
