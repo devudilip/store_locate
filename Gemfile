@@ -32,6 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#gem 'chosen-rails',github: "Compass/compass-rails", branch: "master"
+gem 'chosen-rails', git: 'git://github.com/qpowell/chosen-rails.git'
+
 group :development, :test do
   gem 'sqlite3'
   

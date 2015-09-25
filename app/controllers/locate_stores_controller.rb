@@ -3,6 +3,7 @@ class LocateStoresController < ApplicationController
   require 'net/http'
 
   def index
+    @product = Product.new
    @stores = Store.select('lat, long')
    if params[:query]
     @available_stores = Product.search(params[:query])

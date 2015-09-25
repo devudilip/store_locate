@@ -1,12 +1,20 @@
  <div class="row">
   <div class="col-lg-12">
+
+
+
     <!--<form class="navbar-form" role="search" method="get" id="search-form" name="search-form">-->
-      <%= form_tag(locate_stores_path, :method => :get ) do %>
+      <%= form_for @product, url: locate_stores_path, method: :get do |f| %>
       <div class="input-group search-bar">
 
       <!--<input type="text" class="form-control" placeholder="Search Products" id="query" name="query" value="" required>-->
-      
-        <%= text_field_tag 'query', params[:query], :class=>"form-control", :placeholder => "Search Products"   %>
+
+     <%= f.select 'name',
+    Product.all.map { |u| [u.name, u.id] },
+               { include_blank: true },
+               { class: 'chosen-select form-control', multiple: true }
+     %>
+
       
         <div class="input-group-btn">
           <!--<button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>-->
