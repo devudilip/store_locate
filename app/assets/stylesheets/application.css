@@ -14,6 +14,28 @@
  *= require_tree .
  *= require_self
  */
-.search-bar{
-	width: 100%;
-}
+ .search-bar{
+ 	width: 100%;
+ }
+
+ a.divlink {
+ 	background-color: #e9e5dc;
+ 	border: 1px inset #cecece;
+ 	color: #040222;
+ 	display: block;
+ 	float: left;
+ 	height: 120px;
+ 	margin: 1%;
+ 	text-align: center;
+ 	width: 100%;
+ }
+
+ .store-info a:hover {
+ 	text-decoration: none;
+ 	border: 1px outset #cecece;
+ 	color: #040222;
+ }
+
+ .store-info p, .store-info h5 {
+ 	margin: 1%;
+ }
