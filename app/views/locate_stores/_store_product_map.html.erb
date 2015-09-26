@@ -1,5 +1,6 @@
    <script>
-     var destination = {lat: <%= @destination_lat %>, lng: <%= @destination_long %> };
+     var destination = {lat: <%= @stores.first[:lat] %>, lng: <%= @stores.first[:lng] %> };
+     console.log(destination);
      function initMap() {
       var mapDiv = document.getElementById('map');
       var directionsService = new google.maps.DirectionsService;
