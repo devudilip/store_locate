@@ -3,7 +3,7 @@
   <div class="store-info">
     <% @stores.each do |store| %>
     <a href="#" class="divlink">
-      <i class="fa fa-map-marker fa-2x"><h5 class="name" style="margin-top: -13px;margin-left: 17px;"><%= store[:store_name] %></h5></i>
+      <i class="fa fa-map-marker"><h5 class="name" style="margin-top: -13px;margin-left: 17px;"><%= store[:store_name] %></h5></i>
       <p> <%= store[:address] %>  </p>
       <p style="font-weight:bold"><%= store[:distance].round(4)%> Miles</p>
       <b class='lat' style='display:none;'> <%= store[:lat] %> </b>
