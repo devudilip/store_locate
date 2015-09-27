@@ -19,12 +19,10 @@
  }
 
  a.divlink {
- 	background-color:#c7e2f7;
- 	border: 1px inset #cecece;
- 	/*border-radius: 31px 31px 31px 31px;*/
- 	border-radius: 25px 25px 25px 25px;
- 	border: 1px solid #000000;
- 	color: #01539f;
+ 	background-image: url("/assets/map_bg.png");
+ 	border-radius: 25px;
+ 	border: 0.5px solid #7d7968;
+ 	color: #252528;
  	display: block;
  	float: left;
  	height: 120px;
@@ -32,27 +30,26 @@
  	text-align: left;
  	width: 100%;
  }
+
+ a.divlink p {
+ 	margin: 0 10px;
+ }
  
-.fa-map-marker{
-  padding-right:10px;
-  color: red;
-  margin-left: 8px;
-  padding-top: 20px;
+ .fa-map-marker{
+ 	padding-right:10px;
+ 	color: #F7544C;
+ 	margin-left: 8px;
+ 	padding-top: 20px;
  } 
  
  .name{
-    color: #01539f;
-    border-bottom: 0px solid #fff;
-    background-position: -34px 0;
-    background-color: #c7e2f7;
-    background-repeat: no-repeat; 
-    font-family: tescoregular,arial,sans-serif;
-    text-align: left;
+ 	color: #01539f;
+ 	font-family: tescoregular,arial,sans-serif;
  }
 
  .store-info a:hover {
  	text-decoration: none;
- 	border: 1px outset #cecece;
+ 	border: 1px none #7d7968;
  	color: #040222;
  }
 
