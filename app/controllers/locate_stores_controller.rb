@@ -3,31 +3,32 @@ class LocateStoresController < ApplicationController
   require 'net/http'
 
   def index
-   @stores = Store.select('lat, long')
-   if params[:query]
-    @available_stores = Product.find_prod_id(params[:query])
+    @product = Product.new
+    if params[:query]
+      stores = Store.max_prod_avail(params[:query])
+      @stores = sort_stores(stores)
+      @destination_lat = 51.508315 
+      @destination_long = -0.165138
+    end
   end
-end
 
 
+  def search
+    @stores = Store.all
+    @arr_stores = []
 
-def search
-  @stores = Store.all
-
-  @arr_stores = []
-
-  @stores.each do |store|
+    @stores.each do |store|
 
 
-   cos_lat = Math.cos(store.lat.to_f * (Math::PI)/180)
-   sin_lat = Math.sin(store.lat.to_f * (Math::PI) / 180)
-   cos_lng = Math.cos(store.long.to_f * (Math::PI) / 180)
-   sin_lng = Math.sin(store.long.to_f * (Math::PI) / 180)
+     cos_lat = Math.cos(store.lat.to_f * (Math::PI)/180)
+     sin_lat = Math.sin(store.lat.to_f * (Math::PI) / 180)
+     cos_lng = Math.cos(store.long.to_f * (Math::PI) / 180)
+     sin_lng = Math.sin(store.long.to_f * (Math::PI) / 180)
 
-   cur_cos_lat = Math.cos(51.508530 * (Math::PI) / 180)
-   cur_sin_lat = Math.sin(51.508530 * (Math::PI) / 180)
-   cur_cos_lng = Math.cos(-0.076132 * (Math::PI) / 180)
-   cur_sin_lng = Math.sin(-0.076132 * (Math::PI) / 180)
+     cur_cos_lat = Math.cos(51.508530 * (Math::PI) / 180)
+     cur_sin_lat = Math.sin(51.508530 * (Math::PI) / 180)
+     cur_cos_lng = Math.cos(-0.076132 * (Math::PI) / 180)
+     cur_sin_lng = Math.sin(-0.076132 * (Math::PI) / 180)
 
        cos_allowed_distance = Math.cos(50.0 / 6371) # This is 2km
 
@@ -48,9 +49,13 @@ def search
      end  
    end
 
+   private
 
+   def sort_stores(stores)
+    max_count = stores.sort_by { |store| store[:count] }.last
+    first_prefered = stores.select{|store| store[:count] == max_count[:count]}.sort_by{|dis| dis[:distance]}
+    others = stores.select{|store| store[:count] != max_count[:count]}.sort_by{|dis| dis[:distance]}
+    first_prefered + others
+  end
 
-
-
-
- end
+end

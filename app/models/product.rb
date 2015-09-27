@@ -5,9 +5,12 @@ class Product < ActiveRecord::Base
   has_many :store_products
   has_many :stores, through: :store_products
 
-  def self.search_availability(store, product)
-    p ">>>>>>>>>>>>>>>>>>>>>>>"
-    StoreProduct.where(store_id: store, product_id: product).count > 0
+  def self.search_availability(store, products)
+    store = Store.find(store)
+    products =  products.split(',').flatten.map(&:to_i)
+    product = store.products.includes(:store_products).where("store_products.product_id in (?)", products).select('id')
+    result = {store_lat: store.lat, store_long: store.long, avail_product: product, count: product.count}
+    return result
   end
 
   def self.search(name)

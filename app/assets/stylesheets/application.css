@@ -10,9 +10,52 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require chosen
  *= require_tree .
  *= require_self
  */
-.search-bar{
-	width: 100%;
-}
+ .search-bar{
+ 	width: 100%;
+ }
+
+ a.divlink {
+ 	background-color:#c7e2f7;
+ 	border: 1px inset #cecece;
+ 	/*border-radius: 31px 31px 31px 31px;*/
+ 	border-radius: 25px 25px 25px 25px;
+ 	border: 1px solid #000000;
+ 	color: #01539f;
+ 	display: block;
+ 	float: left;
+ 	height: 120px;
+ 	margin: 1%;
+ 	text-align: left;
+ 	width: 100%;
+ }
+ 
+.fa-map-marker{
+  padding-right:10px;
+  color: red;
+  margin-left: 8px;
+  padding-top: 20px;
+ } 
+ 
+ .name{
+    color: #01539f;
+    border-bottom: 0px solid #fff;
+    background-position: -34px 0;
+    background-color: #c7e2f7;
+    background-repeat: no-repeat; 
+    font-family: tescoregular,arial,sans-serif;
+    text-align: left;
+ }
+
+ .store-info a:hover {
+ 	text-decoration: none;
+ 	border: 1px outset #cecece;
+ 	color: #040222;
+ }
+
+ .store-info p, .store-info h5 {
+ 	margin: 1%;
+ }
