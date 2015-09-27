@@ -57,8 +57,27 @@
     </div>
     <%= error_span(@store[:phone]) %>
   </div>
-
-
+  <div class="control-group">
+    <%= f.label :location_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :location_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@store[:location_id]) %>
+  </div>
+    <div class="control-group">
+    <%= f.label :store_distance, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :store_distance, :class => 'form-control' %>
+    </div>
+    <%= error_span(@store[:store_distance]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :store_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :store_type, :class => 'form-control' %>
+    </div>
+    <%= error_span(@store[:store_type]) %>
+  </div>
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
             stores_path, :class => 'btn btn-default' %>

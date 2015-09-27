@@ -66,15 +66,12 @@ class Product < ActiveRecord::Base
     
     
     # product service TESCO public API
-    def self.check_services
+    def self.product_service_API_list
      
+     result_json =  JSON.parse(open("http://ess-search-ppe.westeurope.cloudapp.azure.com/api/search/?query=bread&fields=tpnb,unitprice,price,name,description,IsNew,IsSpecialOffer,image,id,PromotionDescription,PromotionId,PromotionIcon,PromotionStart,PromotionEnd,ContentsMeasureType,ContentsQuantity,UnitQuantity,AverageSellingUnitWeight,UnitOfSale").read)
      
-     return new_res = JSON.parse('api/products?query=br')
-     
-     #result_json =  JSON.parse(open("http://ess-search-ppe.westeurope.cloudapp.azure.com/api/search/?query=bread&fields=tpnb,unitprice,price,name,description,IsNew,IsSpecialOffer,image,id,PromotionDescription,PromotionId,PromotionIcon,PromotionStart,PromotionEnd,ContentsMeasureType,ContentsQuantity,UnitQuantity,AverageSellingUnitWeight,UnitOfSale").read)
-     
-     #matched_products = result_json["uk"]["ghs"]["products"]["results"].collect {|val| {val["tpnb"] => val["name"]} }
-     #matched_products.each {|f| puts f.keys }
+     matched_products = result_json["uk"]["ghs"]["products"]["results"].collect {|val| {val["tpnb"] => val["name"]} }
+     matched_products.each {|f| puts f.keys }
     end
         
  end

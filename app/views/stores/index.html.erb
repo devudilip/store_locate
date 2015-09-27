@@ -12,6 +12,9 @@
       <th><%= model_class.human_attribute_name(:long) %></th>
       <th><%= model_class.human_attribute_name(:pin) %></th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
+      <th><%= model_class.human_attribute_name(:location_id)%></th>
+      <th><%= model_class.human_attribute_name(:store_distance)%></th>
+      <th><%= model_class.human_attribute_name(:store_type)%></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -26,6 +29,9 @@
         <td><%= store.long %></td>
         <td><%= store.pin %></td>
         <td><%= store.phone %></td>
+        <td><%= store.location_id %></td>
+        <td><%= store.store_distance %></td>
+        <td><%= store.store_type %></td>
         <td><%=l store.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
