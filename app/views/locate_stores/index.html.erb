@@ -36,3 +36,13 @@
 <%= render "locate_map" %>
 <% end %>
 
+<script>
+
+$( document ).ready(function() {
+  $(".chosen-drop").hide();
+  $(".default").keypress(function() {
+     $(".chosen-drop").show(); 
+  });
+});
+
+</script>
