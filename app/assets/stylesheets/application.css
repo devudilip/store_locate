@@ -20,15 +20,18 @@
 
  a.divlink {
  	background-image: url("/assets/map_bg.png");
- 	border-radius: 25px;
- 	border: 0.5px solid #7d7968;
- 	color: #252528;
- 	display: block;
- 	float: left;
- 	height: 95px;
- 	margin: 1%;
- 	text-align: left;
- 	width: 100%;
+ 	background-color: #c7e2f7;
+    border: 1px inset #cecece;
+    /* border-radius: 31px 31px 31px 31px; */
+    border-radius: 25px 25px 25px 25px;
+    border: 0.5px solid #000000;
+    color: #01539f;
+    display: block;
+    float: left;
+    height: 95px;
+    margin: 1%;
+    text-align: left;
+    width: 100%;
  }
 
  a.divlink p {
@@ -36,10 +39,10 @@
  }
  
  .fa-map-marker{
- 	padding-right:10px;
- 	color: #F7544C;
- 	margin-left: 8px;
- 	padding-top: 20px;
+ 	padding-right: 10px;
+    color: red;
+    margin-left: 8px;
+    padding-top: 20px;
  } 
  
  .name{
@@ -56,3 +59,17 @@
  .store-info p, .store-info h5 {
  	margin: 1%;
  }
+ 
+ .prod_info {
+    font-weight: bold;
+    color: #01539f;
+    border: 1px solid #000000;
+    border-radius: 53px 53px 53px 53px;
+    height: 29px;
+    text-align: center;
+    width: 100%;
+    background-color: #c7e2f7;
+}
+ 
+ 
+ 
