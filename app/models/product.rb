@@ -52,6 +52,7 @@ class Product < ActiveRecord::Base
      end
    end
 
+ # product service method
     def self.find_prod_id(name=nil)
  
        if name != "" 
@@ -66,12 +67,18 @@ class Product < ActiveRecord::Base
     
     
     # product service TESCO public API
-    def self.product_service_API_list
+    def self.create_seeds_product_service_API_list(product_search)
      
-     result_json =  JSON.parse(open("http://ess-search-ppe.westeurope.cloudapp.azure.com/api/search/?query=bread&fields=tpnb,unitprice,price,name,description,IsNew,IsSpecialOffer,image,id,PromotionDescription,PromotionId,PromotionIcon,PromotionStart,PromotionEnd,ContentsMeasureType,ContentsQuantity,UnitQuantity,AverageSellingUnitWeight,UnitOfSale").read)
+     product_results =  JSON.parse(open("http://ess-search-ppe.westeurope.cloudapp.azure.com/api/search/?query=#{product_search}&fields=tpnb,unitprice,price,name,description,IsNew,IsSpecialOffer,image,id,PromotionDescription,PromotionId,PromotionIcon,PromotionStart,PromotionEnd,ContentsMeasureType,ContentsQuantity,UnitQuantity,AverageSellingUnitWeight,UnitOfSale").read)
      
-     matched_products = result_json["uk"]["ghs"]["products"]["results"].collect {|val| {val["tpnb"] => val["name"]} }
-     matched_products.each {|f| puts f.keys }
+       product_results["uk"]["ghs"]["products"]["results"].each { |f|
+       p "Product.create(name:" + "'" + f["name"].to_s + "'," + "description:" + "'" + f["description"].to_s + "'," + "price:" + "'" + f["unitprice"].to_s + "'," + "tpnb:" + "'" + f["tpnb"].to_s + "'" + ")"
+     }
+     #product_results.each {|res| p res }
+     # product service to be called from search
+    # matched_products = result_json["uk"]["ghs"]["products"]["results"].collect {|val| {val["tpnb"] => val["name"]} }
+     
+     #return matched_products.each {|f| puts f.keys }
     end
         
  end

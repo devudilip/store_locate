@@ -4,7 +4,7 @@ class Store < ActiveRecord::Base
   has_many :store_products
   has_many :products, through: :store_products
   
-  # Tesco STore API
+  # CReate seeds from Tesco STore API
   def self.create_seeds_using_stores_api
     #{lat: 51.508530, lng: -0.076132}
     long = -0.076132
