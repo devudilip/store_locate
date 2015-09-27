@@ -15,8 +15,8 @@
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         // mocking current location as london only
-        lat: position.coords.latitude,//51.508530,//position.coords.latitude,
-        lng: position.coords.longitude//-0.076132//position.coords.longitude
+        lat: 51.508530,//position.coords.latitude,
+        lng: -0.076132//position.coords.longitude
       };
       infoWindow.setPosition(pos);
       infoWindow.setContent('You are here.');
