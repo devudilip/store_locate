@@ -9,7 +9,7 @@
 
       <!--<input type="text" class="form-control" placeholder="Search Products" id="query" name="query" value="" required>-->
 
-      <%= select_tag 'query', options_from_collection_for_select(Product.all, "id", "name"),include_blank: true, class: 'chosen-select form-control', multiple: true %>
+      <%= select_tag 'query', options_from_collection_for_select(Product.all, "id", "name"),include_blank: true,:data => {:placeholder => 'Please Enter Products'}, class: 'chosen-select form-control', multiple: true %>
 
       
       <div class="input-group-btn">
