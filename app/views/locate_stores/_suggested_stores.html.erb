@@ -1,9 +1,11 @@
 <div class="row">
   <div class="store-info">
-    <% @stores[1..-1].each do |store| %>
-    <a href="" class="divlink">
+    <% @stores.each do |store| %>
+    <a href="#" class="divlink">
       <h5> <%= store[:store_name] %></h5>
       <p> <%= store[:address] %>  </p>
+      <b class='lat' style='display:none;'> <%= store[:lat] %> </b>
+      <b class='lng' style='display:none;'> <%= store[:lng] %> </b>
     </a>
     <% end %>
   </div>  

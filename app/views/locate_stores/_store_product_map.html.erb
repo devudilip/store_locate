@@ -1,6 +1,5 @@
    <script>
      var destination = {lat: <%= @stores.first[:lat] %>, lng: <%= @stores.first[:lng] %> };
-     console.log(destination);
      function initMap() {
       var mapDiv = document.getElementById('map');
       var directionsService = new google.maps.DirectionsService;
@@ -31,6 +30,21 @@
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
+  }
+
+  var onChangeHandler = function() {
+    var lat = parseFloat(this.getElementsByClassName("lat")[0].innerHTML);
+    var lng = parseFloat(this.getElementsByClassName("lng")[0].innerHTML);
+     // var attribute = this.getElementsByTagName("p")[0].innerHTML;
+     var store_destination = {lat: lat, lng: lng};
+     var my_source = {lat: 51.508530, lng: -0.076132};
+     calculateAndDisplayRoute(directionsService, directionsDisplay, my_source, store_destination);
+   };
+
+   var classname = document.getElementsByClassName("divlink");
+
+   for(var i=0;i<classname.length;i++){
+    classname[i].addEventListener('click', onChangeHandler, false);
   }
 
 
