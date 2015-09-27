@@ -19,15 +19,35 @@
  }
 
  a.divlink {
- 	background-color: #e9e5dc;
+ 	background-color:#c7e2f7;
  	border: 1px inset #cecece;
- 	color: #040222;
+ 	/*border-radius: 31px 31px 31px 31px;*/
+ 	border-radius: 25px 25px 25px 25px;
+ 	border: 1px solid #000000;
+ 	color: #01539f;
  	display: block;
  	float: left;
  	height: 120px;
  	margin: 1%;
- 	text-align: center;
+ 	text-align: left;
  	width: 100%;
+ }
+ 
+.fa-map-marker{
+  padding-right:10px;
+  color: red;
+  margin-left: 8px;
+  padding-top: 20px;
+ } 
+ 
+ .name{
+    color: #01539f;
+    border-bottom: 0px solid #fff;
+    background-position: -34px 0;
+    background-color: #c7e2f7;
+    background-repeat: no-repeat; 
+    font-family: tescoregular,arial,sans-serif;
+    text-align: left;
  }
 
  .store-info a:hover {

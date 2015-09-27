@@ -2,8 +2,9 @@
   <div class="store-info">
     <% @stores[1..-1].each do |store| %>
     <a href="" class="divlink">
-      <h5> <%= store[:store_name] %></h5>
+      <i class="fa fa-map-marker"><h5 class="name" style="margin-top: -13px;margin-left: 17px"><%= store[:store_name] %></h5></i>
       <p> <%= store[:address] %>  </p>
+      <p><%= store[:distance]%> Miles</p>
     </a>
     <% end %>
   </div>  
