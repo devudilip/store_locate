@@ -30,7 +30,7 @@
   <% end %>
 </div>
 
-<% if params[:query] %>
+<% if params[:query] && !@stores.blank? %>
 <%= render "store_product_map" %>
 <% else %>
 <%= render "locate_map" %>
