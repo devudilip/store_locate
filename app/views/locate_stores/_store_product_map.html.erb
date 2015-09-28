@@ -1,16 +1,17 @@
    <script>
      var destination = {lat: <%= @stores.first[:lat] %>, lng: <%= @stores.first[:lng] %> };
+     var infoWindows = [];
      function initMap() {
       var mapDiv = document.getElementById('map');
       var directionsService = new google.maps.DirectionsService;
       var directionsDisplay = new google.maps.DirectionsRenderer;
       var myLatLng = {lat: 51.508530, lng: -0.076132};
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
+        zoom: 15,
         center: myLatLng
       });
 
-      var infoWindow = new google.maps.InfoWindow({map: map});
+      // var infoWindow = new google.maps.InfoWindow({map: map});
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -39,6 +40,8 @@
      var store_destination = {lat: lat, lng: lng};
      var my_source = {lat: 51.508530, lng: -0.076132};
      calculateAndDisplayRoute(directionsService, directionsDisplay, my_source, store_destination);
+     store_name = this.getElementsByTagName("h5")[0].innerHTML
+     infoShow(my_source,store_destination, store_name);
    };
 
    var classname = document.getElementsByClassName("divlink");
@@ -50,6 +53,33 @@
 
   directionsDisplay.setMap(map);
   calculateAndDisplayRoute(directionsService, directionsDisplay, myLatLng, destination);
+  first_time_source = document.getElementsByClassName("divlink")[0].getElementsByTagName("h5")[0].innerHTML
+  infoShow(myLatLng,destination, first_time_source);
+
+  function infoShow(source, destination, storename) {
+    var infoWindow1 = null;
+    infoWindow1 = new google.maps.InfoWindow();
+    var windowLatLng = new google.maps.LatLng(source.lat, source.lng);
+    infoWindow1.setOptions({
+      content: "You are here ",
+      position: windowLatLng,
+    });
+    var infoWindow2 = null;
+    infoWindow2 = new google.maps.InfoWindow();
+    var windowLatLng = new google.maps.LatLng(destination.lat,destination.lng);
+    infoWindow2.setOptions({
+      content: storename,
+      position: windowLatLng,
+    });
+    for (var i=0;i<infoWindows.length;i++) {
+     infoWindows[i].close();
+   }
+   infoWindows.push(infoWindow1); 
+   infoWindows.push(infoWindow2); 
+   infoWindow1.open(map); 
+   infoWindow2.open(map); 
+ }
+
 
 //End of init map
 }
@@ -61,11 +91,12 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, myLatLng
     travelMode: google.maps.TravelMode.DRIVING
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    } else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
+     directionsDisplay.setOptions({ preserveViewport: true });
+     directionsDisplay.setDirections(response);
+   } else {
+    window.alert('Directions request failed due to ' + status);
+  }
+});
 }
 
 function rad(x) {return x*Math.PI/180;}
