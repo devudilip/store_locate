@@ -8,13 +8,18 @@
     <div class="input-group search-bar">
 
       <!--<input type="text" class="form-control" placeholder="Search Products" id="query" name="query" value="" required>-->
-
-      <%= select_tag 'query', options_from_collection_for_select(Product.all, "id", "name"),include_blank: true,:data => {:placeholder => 'Please Enter Products'}, class: 'chosen-select form-control', multiple: true %>
-
+      
+      <%= select_tag 'query', options_from_collection_for_select(Product.all, "id", "name", params[:query]),include_blank: true,:data => {:placeholder => 'Please Enter Products'}, class: 'chosen-select form-control', multiple: true, :disabled => params[:query].nil? ? false : true%>
+    
+          
+    <!-- edit option to check after page reload -->   
+      <%#= select_tag 'query', options_from_collection_for_select(Product.all, "id", "name", 1),include_blank: true,:data => {:placeholder => 'Please Enter Products'}, class: 'chosen-select form-control', multiple: true, :disabled => params[:query].nil? ? false : false%>
+      <%#= select_tag 'query[state_id]', options_from_collection_for_select(Product.all, "id", "name", params[:query][:state_id].to_i),include_blank: true,:data => {:placeholder => 'Please Enter Products'}, class: 'chosen-select form-control', multiple: true, :disabled => params[:query].nil? ? false : false%>
       
       <div class="input-group-btn">
         <!--<button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>-->
-        <%= submit_tag 'Search', :class=>"btn btn-success", :value=>"Search"%><i class="fa fa-search"></i>
+       <!-- Added disable with feature-->
+        <%= submit_tag 'Search', :class=>"btn btn-success", :value=>"Search", data: {disable_with: "Searching..."} %><i class="fa fa-search"></i>
       </div>
     </div>
     <%end%>

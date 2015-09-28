@@ -7,8 +7,9 @@ class Product < ActiveRecord::Base
 
   def self.search_availability(store, products)
     store = Store.find(store)
-    products =  products.split(',').flatten.map(&:to_i)
-    product = store.products.includes(:store_products).where("store_products.product_id in (?)", products).select('id')
+    #products =  products.split(',').flatten.map(&:to_i)
+    
+    product = store.products.includes(:store_products).where("store_products.product_id in (?)", [6, 16]).select('id')
     result = {store_lat: store.lat, store_long: store.long, avail_product: product, count: product.count}
     return result
   end
