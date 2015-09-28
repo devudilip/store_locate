@@ -18,53 +18,64 @@
  	width: 100%;
  }
 
- a.divlink {
- 	background-image: url("/assets/map_bg.png");
- 	background-color: #c7e2f7;
-    border: 1px inset #cecece;
-    /* border-radius: 31px 31px 31px 31px; */
-    border-radius: 25px 25px 25px 25px;
-    border: 0.5px solid #000000;
-    color: #01539f;
-    display: block;
-    float: left;
-    height: 95px;
-    margin: 1%;
-    text-align: left;
-    width: 100%;
- }
+ body{
+    background-image: url("/assets/bg-pattern.png");
+}
 
- a.divlink p {
- 	margin: 0 25px;
- }
- 
+a.divlink {
+  background-image: url("/assets/map_bg.png");
+  background-color: #c7e2f7;
+  border: 1px inset #cecece;
+  /* border-radius: 31px 31px 31px 31px; */
+  border-radius: 25px 25px 25px 25px;
+  border: 0.5px solid #000000;
+  color: #01539f;
+  display: block;
+  float: left;
+  height: 95px;
+  margin: 1%;
+  text-align: left;
+  width: 100%;
+}
+
+a.divlink p {
+  margin: 0 25px;
+  color: #5F5B57;
+}
+
 .spot{
-  background: #FFFACD !important;
- }
- 
- .fa-map-marker{
- 	padding-right: 10px;
-    color: red;
-    margin-left: 8px;
-    padding-top: 20px;
- } 
- 
- .name{
- 	color: #01539f;
- 	font-family: tescoregular,arial,sans-serif;
- }
+  background: #E7E7FF !important;
+}
 
- .store-info a:hover {
- 	text-decoration: none;
- 	border: 1px none #7d7968;
- 	color: #040222;
- }
+.fa-map-marker{
+  padding-right: 10px;
+  color: red;
+  margin-left: 8px;
+  padding-top: 20px;
+} 
 
- .store-info p, .store-info h5 {
- 	margin: 1%;
- }
- 
- .prod_info {
+.fa-info { 
+ float: right;
+ margin: 5px 35px 0 0;
+ font-weight: bolder;
+}
+
+.name{
+  color: #01539f;
+  font-family: tescoregular,arial,sans-serif;
+}
+
+.store-info a:hover {
+  text-decoration: none;
+  border: 1px none #7d7968;
+  color: #040222;
+}
+
+.store-info p, .store-info h5 {
+  margin: 1%;
+}
+
+.prod_info {
     font-weight: bold;
     color: #01539f;
     border: 1px solid #000000;
@@ -74,7 +85,7 @@
     width: 100%;
     background-color: #c7e2f7;
 }
- 
+
 .sort{
     float: right;
     margin-right: 15px;  

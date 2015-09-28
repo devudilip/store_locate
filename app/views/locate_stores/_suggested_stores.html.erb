@@ -9,16 +9,18 @@
       <a href="#" class="divlink">
         <%end%>
         <i class="fa fa-map-marker"><h5 class="name" style="margin-top: -13px;margin-left: 17px;"><%= store[:store_name] %></h5></i>
-        <p> <%= store[:address] %> </p>
-        <p style="font-weight:bold"><%= store[:distance].round(4)%> Miles</p>
-        <b class='lat' style='display:none;'> <%= store[:lat] %> </b>
-        <b class='lng' style='display:none;'> <%= store[:lng] %> </b>
-        <b class=''><%= (sub_value = (params[:query].size - store[:count])) == 0 ? "All of your #{pluralize(params[:query].size, "product")} are available in this Store" : "We have your #{pluralize(store[:count], "product")} in this store. We would like to suggest you an alternative for the remaining #{pluralize(sub_value, "product")}"%></b>
-      </a>
-      <% end %>
-    </div>  
-    <% else %>
-    <p class="prod_info"> Sorry Products are not available!</p>  
-    <% end %>  
-  </div>
+        <p> <%= store[:address] %> 
+        </p>
+        <p style="font-weight:bold"><%= store[:distance].round(4)%> Miles
+         <i class="fa fa-info fa-1x" title="<%="#{pluralize(store[:count], 'product')} fullfilled" %>"></i>  
+       </p>
+       <b class='lat' style='display:none;'> <%= store[:lat] %> </b>
+       <b class='lng' style='display:none;'> <%= store[:lng] %> </b>
+     </a>
+     <% end %>
+   </div>  
+   <% else %>
+   <p class="prod_info"> Sorry Products are not available!</p>  
+   <% end %>  
+ </div>
 
