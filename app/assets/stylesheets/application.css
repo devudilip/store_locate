@@ -38,6 +38,10 @@
  	margin: 0 25px;
  }
  
+.spot{
+  background: #FFFACD !important;
+ }
+ 
  .fa-map-marker{
  	padding-right: 10px;
     color: red;
@@ -71,5 +75,31 @@
     background-color: #c7e2f7;
 }
  
- 
- 
+.sort{
+    float: right;
+    margin-right: 15px;  
+} 
+
+.select-tag {width: 180px;margin-bottom: -67px;height: 29px;border-color: #E7E7CA;background-color: #f8f8f8;}
+
+.form-control {
+    display: block;
+    width: 77%;
+    height: 29px;
+    padding: 3px 28px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    margin-left: 66px;
+    margin-top: -29px;
+}
+

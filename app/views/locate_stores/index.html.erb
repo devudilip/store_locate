@@ -25,6 +25,19 @@
     <%end%>
     <!--</form>-->
   </div>
+<% if params[:query] %>
+  <div class="col-lg-3">
+       <div class="controls">
+           <!--<label class="class-label"><input name="text" type="text" value="Sort By: " style="width: 67px;height: 27px;"></label>-->
+           <input type="text" name="commit" value="Sort By" class="btn btn-success" style="width: 79px;height: 29px;">
+           <select class="form-control">
+             <option>Fullfilment</option>
+           </select>
+      </div>     
+  </div>   
+<% end %>
+
+  
   <div class=<%= width_on_param %>>
     <div id="map" style="height: 500px;"></div>
   </div>
@@ -37,6 +50,7 @@
 
 <% if params[:query] && !@stores.blank? %>
 <%= render "store_product_map" %>
+<div class="sort" style="display:block"></div>
 <% else %>
 <%= render "locate_map" %>
 <% end %>
