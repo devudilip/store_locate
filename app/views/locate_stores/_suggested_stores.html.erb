@@ -1,8 +1,12 @@
 <div class="row">
   <% unless @stores.blank? %>  
   <div class="store-info">
-    <% @stores.each do |store| %>
-    <a href="#" class="divlink">
+    <% @stores.each_with_index do |store,index| %>
+      <% if index == 0%>
+        <a href="#" class="divlink spot">
+      <%else%>
+        <a href="#" class="divlink">
+      <%end%>
       <i class="fa fa-map-marker"><h5 class="name" style="margin-top: -13px;margin-left: 17px;"><%= store[:store_name] %></h5></i>
       <p> <%= store[:address] %>  </p>
       <p style="font-weight:bold"><%= store[:distance].round(4)%> Miles</p>

@@ -33,6 +33,11 @@
   }
 
   var onChangeHandler = function() {
+    var removclassname = document.getElementsByClassName("divlink");
+    for(var i=0;i<removclassname.length;i++){
+     removclassname[i].className = 'divlink';
+   }
+   $(this).addClass("spot");
     var lat = parseFloat(this.getElementsByClassName("lat")[0].innerHTML);
     var lng = parseFloat(this.getElementsByClassName("lng")[0].innerHTML);
      // var attribute = this.getElementsByTagName("p")[0].innerHTML;
