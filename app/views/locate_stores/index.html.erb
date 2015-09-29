@@ -25,7 +25,7 @@
     <%end%>
     <!--</form>-->
   </div>
-<% if params[:query] %>
+<% if params[:query] && !@stores.blank? %>
   <div class="col-lg-3">
        <div class="controls">
            <!--<label class="class-label"><input name="text" type="text" value="Sort By: " style="width: 67px;height: 27px;"></label>-->
